@@ -6,7 +6,6 @@ from api.models.users import Users
 
 app = FastAPI()
 
-
 @app.get("/api/")
 def read_root():
     return {"Hello": "World"}

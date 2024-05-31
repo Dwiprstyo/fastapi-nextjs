@@ -1,27 +1,26 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  rewrites: async () => {
+  async rewrites() {
     return [
       {
-        source: "/api/:path*",
+        source: '/api/:path*',
         destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/api/:path*"
-            : "/api/",
+          process.env.NODE_ENV === 'development'
+            ? 'http://127.0.0.1:8000/api/:path*' // Development endpoint
+            : 'http://127.0.0.1:8000/api/:path*', // Production endpoint
       },
       {
-        source: "/docs",
+        source: '/docs',
         destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/docs"
-            : "/api/docs",
+          process.env.NODE_ENV === 'development'
+            ? 'http://127.0.0.1:8000/docs' // Development endpoint
+            : '/api/docs', // Production endpoint
       },
       {
-        source: "/openapi.json",
+        source: '/openapi.json',
         destination:
-          process.env.NODE_ENV === "development"
-            ? "http://127.0.0.1:8000/openapi.json"
-            : "/api/openapi.json",
+          process.env.NODE_ENV === 'development'
+            ? 'http://127.0.0.1:8000/openapi.json' // Development endpoint
+            : '/api/openapi.json', // Production endpoint
       },
     ];
   },
