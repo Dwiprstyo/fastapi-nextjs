@@ -1,15 +1,11 @@
 {
-    "devCommand": "uvicorn main:app --host 0.0.0.0 --port 3000",
+    "version": 2,
     "builds": [
-        {
-            "src": "api/main.py",
-            "use": "@vercel/python"
-        }
+      { "src": "api/main.py", "use": "@vercel/python" },
+      { "src": "next.config.js", "use": "@vercel/next" }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "api/index.py"
-        }
+      { "src": "/api/(.*)", "dest": "/api/main.py" },
+      { "src": "/(.*)", "dest": "/app/page.tsx" }
     ]
-}
+  }
